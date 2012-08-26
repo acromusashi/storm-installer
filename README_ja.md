@@ -4,15 +4,9 @@
 
 ## 対象環境
 
-OS:
-CentOS 6.X
-
-CPUアーキテクチャ:
-x64 
-
-ミドルウェア:
-JDK6以降がインストールされていること。
-（Oracle JDK、Open JDKどちらでもOK）
+* OS: CentOS 6.X
+* CPU Arch: x64
+* Middleware: Needs JDK6 or after（Oracle JDK or Open JDK）
 
 
 ## 前提環境
@@ -31,12 +25,14 @@ http://d.hatena.ne.jp/acro-engineer/
   https://github.com/acromusashi/storm-installer/downloads  
 
 2.下記の順にRPMファイルをインストールします。
+```
 rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
 rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
 rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
 rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
 rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
 rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+```
 
 
 3.下記コマンドでStormの起動/停止が可能となります。
