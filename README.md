@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Storm-Installer
 
 This package is a package group for ease of setting up a storm cluster.
@@ -79,9 +78,4 @@ Source URL : https://github.com/zeromq/jzmq
 
 Distributed under the Eclipse Public License.
 http://opensource.org/licenses/eclipse-1.0.php
-=======
-storm-installer
-===============
 
-Storm Installer Repository
->>>>>>> 6f0e3999a503d329e0b061b4390f96a073d28c0d
