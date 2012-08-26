@@ -51,9 +51,9 @@ Setting Example:
 ```
 ########### These MUST be filled in for a storm configuration
 storm.zookeeper.servers:
-    - "192.168.100.101"         (zookeeper host)
+    - "192.168.100.101"         ## zookeeper host
 
-nimbus.host: "192.168.100.101"  (nimbus host)
+nimbus.host: "192.168.100.101"  ## nimbus host
 ```
 
 4.Start or stop storm cluster by following commands:
