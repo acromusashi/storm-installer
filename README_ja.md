@@ -36,6 +36,7 @@ rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm
 
 
 3.下記コマンドでStormの起動/停止が可能となります。
+
 Start
 ```
 service storm-nimbus start  
