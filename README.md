@@ -38,13 +38,22 @@ sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm
 sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
 sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
 ```
-3.Set the niubus host and zookeeper host to below property.  
+3.Set the zookeeper host and niubus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
-* nimbus.host             (NIMBUS_HOST)  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
+* nimbus.host             (NIMBUS_HOST)  
 
 ```
 sudo vi /opt/storm/conf/storm.yaml
+```
+
+Setting Example:
+```
+########### These MUST be filled in for a storm configuration
+storm.zookeeper.servers:
+    - "192.168.100.101"         (zookeeper host)
+
+nimbus.host: "192.168.100.101"  (nimbus host)
 ```
 
 4.Start or stop storm cluster by following commands:

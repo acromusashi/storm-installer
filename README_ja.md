@@ -39,14 +39,24 @@ sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm
 sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
 ```
 
-3.設定ファイルにnimbus hostとzookeeper hostを設定します。
+3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
   (参照: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
-* nimbus.host             (NIMBUS_HOST)  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
+* nimbus.host             (NIMBUS_HOST)  
 
 ```
 sudo vi /opt/storm/conf/storm.yaml
 ```
+
+設定例:
+```
+########### These MUST be filled in for a storm configuration
+storm.zookeeper.servers:
+    - "192.168.100.101"         (zookeeper host)
+
+nimbus.host: "192.168.100.101"  (nimbus host)
+```
+
 
 4.下記コマンドでStormの起動/停止が可能となります。
 
