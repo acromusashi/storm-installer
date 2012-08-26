@@ -39,7 +39,7 @@ sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm
 sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
 ```
 
-3.設定ファイルにnimbus hostとzookeeper hostを設定します。
+3.設定ファイルにnimbus hostとzookeeper hostを設定します。  
   (参照: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
 * nimbus.host             (NIMBUS_HOST)  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
