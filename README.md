@@ -21,7 +21,7 @@ there are some important steps you need to do to prepare your system.
   http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/4/RPMS/noarch/  
 
   or below url(in Japanese)  
-  http://d.hatena.ne.jp/acro-engineer/  
+  http://d.hatena.ne.jp/acro-engineer/20111123/1322059295  
 
 
 ## Installing storm package
@@ -31,28 +31,35 @@ there are some important steps you need to do to prepare your system.
 
 2.Install the RPM:
 ```
-rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
-rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+sudo rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
+sudo rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
+sudo rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
+sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
+sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+```
+3.Set the niubus host and zookeeper host to below property.  
+  (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )
+*nimbus.host             (NIMBUS_HOST)
+*storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)
+```
+sudo vi /opt/storm/conf/storm.yaml
 ```
 
-3.Start or stop storm cluster by following commands:
+4.Start or stop storm cluster by following commands:
 
 Start
 ```
-service storm-nimbus start  
-service storm-ui start  
-service storm-supervisor start  
+sudo service storm-nimbus start  
+sudo service storm-ui start  
+sudo service storm-supervisor start  
 ```
 
 Stop
 ```
-service storm-nimbus stop  
-service storm-ui stop  
-service storm-supervisor stop  
+sudo service storm-nimbus stop  
+sudo service storm-ui stop  
+sudo service storm-supervisor stop  
 ```
 
 
@@ -76,6 +83,6 @@ Source URL : https://github.com/zeromq/jzmq
 
 ## License
 
-Distributed under the Eclipse Public License.
+Distributed under the Eclipse Public License.  
 http://opensource.org/licenses/eclipse-1.0.php
 
