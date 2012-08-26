@@ -15,13 +15,13 @@ Stormクラスタを動作させる際、
 ZooKeeperクラスタを構築しておく必要があります。
 
 ZooKeeperのインストールにあたっては
-cdhのZooKeeperパッケージを用いるか、下記のページを参照ください。
+cdhのZooKeeperパッケージを用いるか、下記のページを参照ください。  
 http://d.hatena.ne.jp/acro-engineer/
 
 
 ## 利用手順
 
-1.ダウンロードしたZipアーカイブを展開します。
+1.ダウンロードしたZipアーカイブを展開します。  
   https://github.com/acromusashi/storm-installer/downloads  
 
 2.下記の順にRPMファイルをインストールします。
@@ -52,20 +52,20 @@ service storm-supervisor stop
 
 ## 配布ライブラリライセンス
 
-名称       : Storm
-バージョン : 0.8.0
-Lisence    : Eclipse Public License 1.0
-Source URL : http://storm-project.net/
+名称       : Storm  
+バージョン : 0.8.0  
+Lisence    : Eclipse Public License 1.0  
+Source URL : http://storm-project.net/  
 
-名称       : ZeroMQ
-バージョン : 2.1.7
-Lisence    : LGPLv3
-Source URL : http://www.zeromq.org/
+名称       : ZeroMQ  
+バージョン : 2.1.7  
+Lisence    : LGPLv3  
+Source URL : http://www.zeromq.org/  
 
-名称       : JZMQ
-バージョン : 2.1.0
-Lisence    : LGPLv3
-Source URL : https://github.com/zeromq/jzmq
+名称       : JZMQ  
+バージョン : 2.1.0  
+Lisence    : LGPLv3  
+Source URL : https://github.com/zeromq/jzmq  
 
 
 ## License
