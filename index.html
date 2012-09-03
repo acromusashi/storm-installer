@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Storm-installer by acromusashi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Storm-installer</h1>
+        <p>Storm Installer Repository</p>
+
+        <p class="view"><a href="https://github.com/acromusashi/storm-installer">View the Project on GitHub <small>acromusashi/storm-installer</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/acromusashi/storm-installer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/acromusashi/storm-installer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/acromusashi/storm-installer">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Storm-Installer</h1>
+
+<p>This package is a package group for ease of setting up a storm cluster.</p>
+
+<h2>Environment</h2>
+
+<ul>
+<li>OS: CentOS 6.X</li>
+<li>CPU Arch: x64</li>
+<li>Middleware: Needs JDK6 or after（Oracle JDK or Open JDK）</li>
+</ul><h2>Before you install storm package</h2>
+
+<p>Before you install Storm Package on a cluster,
+there are some important steps you need to do to prepare your system.</p>
+
+<p>1.Storm needs zookeeper cluster.<br>
+  For zookeeper cluster installation, you find install step on cdh.<br><a href="https://ccp.cloudera.com/display/CDH4DOC/CDH4+Installation">https://ccp.cloudera.com/display/CDH4DOC/CDH4+Installation</a><br><a href="http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/4/RPMS/noarch/">http://archive.cloudera.com/cdh4/redhat/6/x86_64/cdh/4/RPMS/noarch/</a>  </p>
+
+<p>or below url(in Japanese)<br><a href="http://d.hatena.ne.jp/acro-engineer/20111123/1322059295">http://d.hatena.ne.jp/acro-engineer/20111123/1322059295</a>  </p>
+
+<h2>Installing storm package</h2>
+
+<p>1.Unzip downloaded zip archive.<br><a href="https://github.com/acromusashi/storm-installer/downloads">https://github.com/acromusashi/storm-installer/downloads</a>  </p>
+
+<p>2.Install the RPM:</p>
+
+<pre><code>sudo rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
+sudo rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
+sudo rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
+sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
+sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+</code></pre>
+
+<p>3.Set the zookeeper host and niubus host to below property.<br>
+  (Reference: <a href="http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html">http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html</a> )  </p>
+
+<ul>
+<li>storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)<br>
+</li>
+<li>nimbus.host             (NIMBUS_HOST)<br>
+</li>
+</ul><pre><code>sudo vi /opt/storm/conf/storm.yaml
+</code></pre>
+
+<p>Setting Example:</p>
+
+<pre><code>########### These MUST be filled in for a storm configuration
+storm.zookeeper.servers:
+    - "192.168.100.101"         ## zookeeper host
+
+nimbus.host: "192.168.100.101"  ## nimbus host
+</code></pre>
+
+<p>4.Start or stop storm cluster by following commands:</p>
+
+<p>Start</p>
+
+<pre><code>sudo service storm-nimbus start  
+sudo service storm-ui start  
+sudo service storm-supervisor start  
+</code></pre>
+
+<p>Stop</p>
+
+<pre><code>sudo service storm-nimbus stop  
+sudo service storm-ui stop  
+sudo service storm-supervisor stop  
+</code></pre>
+
+<h2>Dependency libraries</h2>
+
+<p>Project    : Storm<br>
+Version    : 0.8.0<br>
+Lisence    : Eclipse Public License 1.0<br>
+Source URL : <a href="http://storm-project.net/">http://storm-project.net/</a>  </p>
+
+<p>Project    : ZeroMQ<br>
+Version    : 2.1.7<br>
+Lisence    : LGPLv3<br>
+Source URL : <a href="http://www.zeromq.org/">http://www.zeromq.org/</a>  </p>
+
+<p>Project    : JZMQ<br>
+Version    : 2.1.0<br>
+Lisence    : LGPLv3<br>
+Source URL : <a href="https://github.com/zeromq/jzmq">https://github.com/zeromq/jzmq</a>  </p>
+
+<h2>License</h2>
+
+<p>Distributed under the Eclipse Public License.<br><a href="http://opensource.org/licenses/eclipse-1.0.php">http://opensource.org/licenses/eclipse-1.0.php</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/acromusashi">acromusashi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
