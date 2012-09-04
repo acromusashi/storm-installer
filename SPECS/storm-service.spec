@@ -33,10 +33,8 @@ Storm has a website at storm-project.net.
 %{__mkdir_p} %{buildroot}/etc/sysconfig
 %{__mkdir_p} %{buildroot}/etc/init.d
 %{__mkdir_p} %{buildroot}/var/log/storm
-%{__mkdir_p} %{buildroot}/opt/storm-%{version}/log4j
 
 %{__mv} init.d/storm-nimbus init.d/storm-supervisor init.d/storm-ui %{buildroot}/etc/init.d
-%{__mv} log4j/storm-service.log.properties %{buildroot}/opt/storm-%{version}/log4j/storm-service.log.properties
 %{__mv} sysconfig/storm %{buildroot}/etc/sysconfig/storm
 
 

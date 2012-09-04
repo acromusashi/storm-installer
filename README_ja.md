@@ -30,13 +30,18 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
   https://github.com/acromusashi/storm-installer/downloads  
 
 2.下記の順にRPMファイルをインストールします。
+  uuidに対する依存性の欠如によるエラーが発生した場合、
+　下記のページからuuid-1.6.1-10.el6.x86_64.rpmをダウンロードして
+　インストールを行ってください。
+　http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html
 ```
-sudo rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-sudo rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-sudo rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-sudo rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
-sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+> su -
+# rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
+# rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
+# rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
+# rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+# rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
 ```
 
 3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
@@ -45,7 +50,7 @@ sudo rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm
 * nimbus.host             (NIMBUS_HOST)  
 
 ```
-sudo vi /opt/storm/conf/storm.yaml
+# vi /opt/storm/conf/storm.yaml
 ```
 
 設定例:
@@ -62,17 +67,18 @@ nimbus.host: "192.168.100.101"  ## nimbus host
 
 Start
 ```
-sudo service storm-nimbus start  
-sudo service storm-ui start  
-sudo service storm-supervisor start  
+# service storm-nimbus start  
+# service storm-ui start  
+# service storm-supervisor start  
 ```
 
 Stop
 ```
-sudo service storm-nimbus stop  
-sudo service storm-ui stop  
-sudo service storm-supervisor stop  
+# service storm-nimbus stop  
+# service storm-ui stop  
+# service storm-supervisor stop  
 ```
+
 
 ## 配布ライブラリライセンス
 
