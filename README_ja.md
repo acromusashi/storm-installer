@@ -69,6 +69,7 @@ Start
 ```
 # service storm-nimbus start  
 # service storm-ui start  
+# service storm-drpc start  
 # service storm-supervisor start  
 ```
 
@@ -76,6 +77,7 @@ Stop
 ```
 # service storm-nimbus stop  
 # service storm-ui stop  
+# service storm-drpc stop  
 # service storm-supervisor stop  
 ```
 
