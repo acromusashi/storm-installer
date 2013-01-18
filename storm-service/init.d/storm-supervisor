@@ -46,11 +46,12 @@ stop() {
     if storm_status; then
         echo "Stopping storm supervisor..."
         killproc -p $PID_FILE -TERM
+        RETVAL=$?
         storm_status
     else
         return 0
     fi
-    return $?
+    return $RETVAL
 }
 
 storm_status() {
