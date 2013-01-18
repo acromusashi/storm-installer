@@ -47,7 +47,7 @@ stop() {
         echo "Stopping storm ui..."
     else
         echo "Storm ui is not running."
-	exit 1
+        return 1
     fi
     killproc -p $PID_FILE -TERM
     storm_status
