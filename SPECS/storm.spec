@@ -1,13 +1,13 @@
 Name: storm	
-Version: 0.8.0
+Version: 0.8.2
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: EPLv1
 URL: http://storm-project.net
-Source: https://github.com/downloads/nathanmarz/storm/storm-%{version}.tgz
+Source: https://dl.dropbox.com/u/133901206/storm-%{version}.zip
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Requires: jzmq 	
+Requires: jzmq 
 %description
 Storm is a distributed realtime computation system. 
 Similar to how Hadoop provides a set of general primitives for doing batch processing, 
