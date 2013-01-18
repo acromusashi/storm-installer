@@ -43,14 +43,13 @@ start() {
 }
 
 stop() {
-    if storm_status>/dev/null; then
+    if storm_status; then
         echo "Stopping storm supervisor..."
+        killproc -p $PID_FILE -TERM
+        storm_status
     else
-        echo "Storm supervisor is not running."
-        return 1
+        return 0
     fi
-    killproc -p $PID_FILE -TERM
-    storm_status
     return $?
 }
 
