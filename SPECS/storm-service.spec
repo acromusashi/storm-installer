@@ -1,5 +1,5 @@
 Name: storm-service
-Version: 0.8.0
+Version: 0.8.2
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	Daemon Package
 Group: Applications/Internet
@@ -48,6 +48,18 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 
 %files -f files.txt
 %defattr(-,root,root,-)
+%attr (755, root, root) %{_sysconfdir}/init.d/storm-*
+
+%preun
+if [ "$1" = "0" ]; then
+    /sbin/service storm-ui stop
+    /sbin/service storm-nimbus stop
+    /sbin/service storm-supervisor stop
+    /sbin/chkconfig storm-ui off
+    /sbin/chkconfig storm-nimbus off
+    /sbin/chkconfig storm-supervisor off
+fi
+exit 0
 
 %changelog
 * Tue Oct 26 2012 Acroquest Technology
