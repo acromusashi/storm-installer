@@ -55,7 +55,7 @@ stop() {
 }
 
 storm_status() {
-    status -p $PID_FILE "Storm Supervisor"
+    status -p $PID_FILE storm-supervisor
     return $?
 }
 
