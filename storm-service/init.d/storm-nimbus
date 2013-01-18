@@ -2,6 +2,8 @@
 #
 ### BEGIN INIT INFO
 # Provides: $storm-nimbus
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 6
 ### END INIT INFO
 
 # Source function library.
