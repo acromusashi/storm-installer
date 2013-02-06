@@ -1,5 +1,5 @@
 Name: storm	
-Version: 0.8.0
+Version: 0.8.2
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
@@ -47,5 +47,9 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 %defattr(-,root,root,-)
 
 %changelog
+* Thu Feb 07 2013 Acroquest Technology
+- Storm-0.8.2 Packaging
+
 * Tue Oct 14 2012 Acroquest Technology
 - Initial Packaging
+
