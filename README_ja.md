@@ -27,7 +27,7 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 ## 利用手順
 
 1.ダウンロードしたZipアーカイブを展開します。  
-  https://github.com/acromusashi/storm-installer/downloads  
+  https://github.com/acromusashi/storm-installer/wiki/Download 
 
 2.下記の順にRPMファイルをインストールします。
   uuidに対する依存性の欠如によるエラーが発生した場合、
