@@ -40,8 +40,8 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 # rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+# rpm -ivh storm-0.8.2-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.8.2-1.el6.x86_64.rpm  
 ```
 
 3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
@@ -83,7 +83,7 @@ Stop
 ## 配布ライブラリライセンス
 
 名称       : Storm  
-バージョン : 0.8.0  
+バージョン : 0.8.2  
 Lisence    : Eclipse Public License 1.0  
 Source URL : http://storm-project.net/  
 
