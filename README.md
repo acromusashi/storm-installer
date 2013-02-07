@@ -27,7 +27,7 @@ there are some important steps you need to do to prepare your system.
 ## Installing storm package
 
 1.Unzip downloaded zip archive.  
-  https://github.com/acromusashi/storm-installer/downloads  
+  https://github.com/acromusashi/storm-installer/wiki/Download  
 
 2.Change root user and Install the RPM:
   If occur failed dependencies uuid, download from  
