@@ -39,8 +39,8 @@ there are some important steps you need to do to prepare your system.
 # rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-X.X.X-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-X.X.X-1.el6.x86_64.rpm  
+# rpm -ivh storm-0.8.2-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.8.2-1.el6.x86_64.rpm  
 ```
 3.Set the zookeeper host and niubus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
