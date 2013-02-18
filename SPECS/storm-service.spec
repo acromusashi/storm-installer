@@ -62,5 +62,10 @@ fi
 exit 0
 
 %changelog
+* Thu Feb 07 2013 Acroquest Technology
+- Storm-0.8.2 Packaging
+
 * Tue Oct 26 2012 Acroquest Technology
 - Initial Packaging
+
+
