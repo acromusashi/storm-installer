@@ -57,6 +57,7 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 
 %post
 chown -R storm:storm /opt/storm-%{version}
+chmod -R 755 /opt/storm/bin/*
 exit 0
 
 %postun
