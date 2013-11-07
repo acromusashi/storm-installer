@@ -76,7 +76,7 @@ case "$1" in
         stop
         ;;
   status)
-        storm_status		 
+        storm_status
         ;;
   restart)
         restart

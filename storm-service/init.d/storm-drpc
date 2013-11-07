@@ -2,14 +2,16 @@
 #
 ### BEGIN INIT INFO
 # Provides: $storm-drpc
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 6
 ### END INIT INFO
 
 # Source function library.
 . /etc/init.d/functions
 RETVAL=0
 
-STORM_USER=root
-PID_FILE="/var/run/storm-drpc.pid"
+STORM_USER=storm
+PID_FILE="/var/run/storm/storm-drpc.pid"
 
 STORM_HOME="/opt/storm"
 LIB="$STORM_HOME/lib"
@@ -27,56 +29,34 @@ DRPC_JVM_OPTS=""
 . /etc/sysconfig/storm
 
 start() {
-    if storm_status $PID_FILE; then
-	echo "Storm drpc is already running."
-	exit 1
+    if storm_status>/dev/null; then
+	    echo "Storm drpc is already running."
+	    exit 1
     else
-	echo "Starting storm drpc..."
+	    echo "Starting storm drpc..."
     fi 
     STORM_CMD="java -$JVM_TYPE -Xmx$DRPC_JVM_MEMORY -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=\"$STORM_HOME\" -Dlogfile.name=drpc.log $DRPC_JVM_OPTS -cp \"$CLASSPATH\" backtype.storm.daemon.drpc &"
-    daemon "$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
+    runuser --shell=/bin/bash --preserve-environment $STORM_USER --command="$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
     RETVAL=$?
-    print_storm_status $PID_FILE
+    storm_status
     return $RETVAL
 }
 
 stop() {
-    if storm_status $PID_FILE; then
+    if storm_status; then
         echo "Stopping storm drpc..."
+        killproc -p $PID_FILE -TERM
+        RETVAL=$?
+        storm_status
     else
-        echo "Storm drpc is not running."
-	exit 1
+        return 0
     fi
-    killproc -p $PID_FILE -TERM
-    print_storm_status $PID_FILE
-    return $?
-}
-
-storm_check_pid() {
-    local pid=$1
-    ps -fp $pid | grep $pid | grep drpc > /dev/null 2>&1
+    return $RETVAL
 }
 
 storm_status() {
-    local pidfile="$1" # IN
-    local pid=`cat "$pidfile" 2>/dev/null`
-    if [ "$pid" = '' ]; then
-    # The file probably does not exist or is empty. 
-        return 1
-    fi
-
-    set -- $pid
-    pid="$1"
-
-    storm_check_pid $pid
-}
-
-print_storm_status() {
-    if storm_status $PID_FILE; then
-        echo "Storm drpc is running."	
-    else
-	echo "Storm drpc is stopped."
-     fi
+    status -p $PID_FILE storm-drpc
+    return $?
 }
 
 restart() {
@@ -96,7 +76,7 @@ case "$1" in
         stop
         ;;
   status)
-  	print_storm_status		 
+        storm_status
         ;;
   restart)
         restart
