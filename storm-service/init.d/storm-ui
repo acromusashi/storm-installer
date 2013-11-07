@@ -8,8 +8,8 @@
 . /etc/init.d/functions
 RETVAL=0
 
-STORM_USER=root
-PID_FILE="/var/run/storm-ui.pid"
+STORM_USER=storm
+PID_FILE="/var/run/storm/storm-ui.pid"
 
 STORM_HOME="/opt/storm"
 LIB="$STORM_HOME/lib"
@@ -34,7 +34,7 @@ start() {
 	echo "Starting storm ui..."
     fi 
     STORM_CMD="java -$JVM_TYPE -Xmx$UI_JVM_MEMORY -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=\"$STORM_HOME\" -Dlogfile.name=ui.log $UI_JVM_OPTS -cp \"$CLASSPATH\" backtype.storm.ui.core &"
-    daemon "$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
+    runuser --shell=/bin/bash --preserve-environment $STORM_USER --command="$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
     RETVAL=$?
     print_storm_status $PID_FILE
     return $RETVAL

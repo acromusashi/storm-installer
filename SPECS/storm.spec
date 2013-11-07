@@ -1,13 +1,14 @@
 Name: storm	
 Version: 0.8.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: EPLv1
 URL: http://storm-project.net
-Source: https://github.com/downloads/nathanmarz/storm/storm-%{version}.tgz
+Source: https://dl.dropbox.com/u/133901206/storm-%{version}.zip
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Requires: jzmq 	
+Requires: jzmq
+Requires(pre): shadow-utils
 %description
 Storm is a distributed realtime computation system. 
 Similar to how Hadoop provides a set of general primitives for doing batch processing, 
@@ -19,6 +20,13 @@ This presentation is also a good introduction to the project.
 
 Storm has a website at storm-project.net.
 
+%pre
+getent group storm >/dev/null || groupadd -r storm
+getent passwd storm >/dev/null || \
+    useradd -r -g storm -d /opt/storm -s /sbin/nologin \
+    -c "Storm Service" storm
+exit 0
+
 %prep
 %setup -q
 
@@ -26,10 +34,9 @@ Storm has a website at storm-project.net.
 %build
 
 %install
-# Clean out any previous builds not on slash (lol)
-[ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
 
 # Copy the storm file to the right places
+%{__mkdir_p} %{buildroot}/opt/storm-local
 %{__mkdir_p} %{buildroot}/opt/storm-%{version}
 %{__mkdir_p} %{buildroot}/var/opt/storm
 %{__cp} -R * %{buildroot}/opt/storm-%{version}/
@@ -41,15 +48,30 @@ echo $(cd %{buildroot} && find . -type f | cut -c 2-) | tr ' ' '\n' > files.txt
 echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 
 %clean
-[ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
+%{__rm} -rf %{buildroot}/opt/storm-%{version}
+%{__rm} %{buildroot}/opt/storm
 
 %files -f files.txt
-%defattr(-,root,root,-)
+%defattr(644,storm,storm,755)
+%dir /opt/storm-local
+
+%post
+chown -R storm:storm /opt/storm-%{version}
+chmod -R 755 /opt/storm/bin/*
+exit 0
+
+%postun
+rm -rf /opt/storm-%{version}
+rm -rf /opt/storm-local
+exit 0
 
 %changelog
+* Tue Mar 16 2013 spudone
+- Fixed to run Storm under a non-root account
+- Fixed uninstall cleanup
+
 * Thu Feb 07 2013 Acroquest Technology
 - Storm-0.8.2 Packaging
 
 * Tue Oct 14 2012 Acroquest Technology
 - Initial Packaging
-
