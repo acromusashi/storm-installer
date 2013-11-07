@@ -62,9 +62,11 @@ if [ "$1" = "0" ]; then
     /sbin/service storm-ui stop
     /sbin/service storm-nimbus stop
     /sbin/service storm-supervisor stop
+    /sbin/service storm-drpc stop
     /sbin/chkconfig storm-ui off
     /sbin/chkconfig storm-nimbus off
     /sbin/chkconfig storm-supervisor off
+    /sbin/chkconfig storm-drpc off
 fi
 exit 0
 
