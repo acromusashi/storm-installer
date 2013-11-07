@@ -34,7 +34,7 @@ Storm has a website at storm-project.net.
 %{__mkdir_p} %{buildroot}/etc/init.d
 %{__mkdir_p} %{buildroot}/var/log/storm
 
-%{__mv} init.d/storm-nimbus init.d/storm-supervisor init.d/storm-ui %{buildroot}/etc/init.d
+%{__mv} init.d/storm-nimbus init.d/storm-supervisor init.d/storm-ui init.d/storm-drpc %{buildroot}/etc/init.d
 %{__mv} sysconfig/storm %{buildroot}/etc/sysconfig/storm
 
 
