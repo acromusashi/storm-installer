@@ -1,11 +1,11 @@
 Name: storm	
-Version: 0.8.2
+Version: 0.9.0-rc2
 Release: 2%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: EPLv1
 URL: http://storm-project.net
-Source: https://dl.dropbox.com/u/133901206/storm-%{version}.zip
+Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-0.9.0-rc2.zip
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: jzmq
 Requires(pre): shadow-utils
@@ -66,6 +66,9 @@ rm -rf /opt/storm-local
 exit 0
 
 %changelog
+* Mon Nov 11 2013 Acroquest Technology
+- Storm-0.9.0-rc2 Packaging
+
 * Tue Mar 16 2013 spudone
 - Fixed to run Storm under a non-root account
 - Fixed uninstall cleanup
