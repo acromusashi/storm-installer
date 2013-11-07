@@ -27,7 +27,7 @@ there are some important steps you need to do to prepare your system.
 ## Installing storm package
 
 1.Unzip downloaded zip archive.  
-  https://github.com/acromusashi/storm-installer/downloads  
+  https://github.com/acromusashi/storm-installer/wiki/Download  
 
 2.Change root user and Install the RPM:
   If occur failed dependencies uuid, download from  
@@ -39,8 +39,8 @@ there are some important steps you need to do to prepare your system.
 # rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
 # rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-0.8.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.8.0-1.el6.x86_64.rpm  
+# rpm -ivh storm-0.8.2-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.8.2-1.el6.x86_64.rpm  
 ```
 3.Set the zookeeper host and niubus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
@@ -82,7 +82,7 @@ Stop
 ## Dependency libraries
 
 Project    : Storm  
-Version    : 0.8.0  
+Version    : 0.8.2  
 Lisence    : Eclipse Public License 1.0  
 Source URL : http://storm-project.net/  
 
