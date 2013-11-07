@@ -10,8 +10,8 @@
 . /etc/init.d/functions
 RETVAL=0
 
-STORM_USER=root
-PID_FILE="/var/run/storm-nimbus.pid"
+STORM_USER=storm
+PID_FILE="/var/run/storm/storm-nimbus.pid"
 
 STORM_HOME="/opt/storm"
 LIB="$STORM_HOME/lib"
@@ -36,7 +36,7 @@ start() {
     	echo "Starting storm nimbus..."
     fi 
     STORM_CMD="java -$JVM_TYPE -Xmx$NIMBUS_JVM_MEMORY -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=\"$STORM_HOME\" -Dlogfile.name=nimbus.log $NIMBUS_JVM_OPTS -cp \"$CLASSPATH\" backtype.storm.daemon.nimbus &"
-    daemon "$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
+    runuser --shell=/bin/bash --preserve-environment $STORM_USER --command="$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
     RETVAL=$?
     storm_status
     return $RETVAL
