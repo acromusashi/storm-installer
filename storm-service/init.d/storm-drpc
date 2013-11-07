@@ -14,16 +14,11 @@ STORM_USER=storm
 PID_FILE="/var/run/storm/storm-drpc.pid"
 
 STORM_HOME="/opt/storm"
-LIB="$STORM_HOME/lib"
+STORM_LIB="$STORM_HOME/lib"
 STORM_JAR=($STORM_HOME/storm-*.jar)
 STORM_CONF="$STORM_HOME/conf"
-STORM_LOG="$STORM_HOME/log4j"
 
-CLASSPATH="$LIB/*:$STORM_JAR:$STORM_CONF:$STORM_LOG"
-
-JVM_TYPE="server"
-DRPC_JVM_MEMORY="768m"
-DRPC_JVM_OPTS=""
+CLASSPATH="$STORM_LIB/*:$STORM_JAR:$STORM_CONF"
 
 # Source config
 . /etc/sysconfig/storm
