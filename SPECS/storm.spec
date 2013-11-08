@@ -1,13 +1,12 @@
 Name: storm	
-Version: 0.9.0-rc2
-Release: 2%{?dist}
+Version: 0.9.0rc2
+Release: 1%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: EPLv1
 URL: http://storm-project.net
-Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-0.9.0-rc2.zip
+Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-0.9.0rc2.tgz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Requires: jzmq
 Requires(pre): shadow-utils
 %description
 Storm is a distributed realtime computation system. 
@@ -36,7 +35,6 @@ exit 0
 %install
 
 # Copy the storm file to the right places
-%{__mkdir_p} %{buildroot}/opt/storm-local
 %{__mkdir_p} %{buildroot}/opt/storm-%{version}
 %{__mkdir_p} %{buildroot}/var/opt/storm
 %{__cp} -R * %{buildroot}/opt/storm-%{version}/
@@ -53,7 +51,6 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 
 %files -f files.txt
 %defattr(644,storm,storm,755)
-%dir /opt/storm-local
 
 %post
 chown -R storm:storm /opt/storm-%{version}
@@ -62,7 +59,6 @@ exit 0
 
 %postun
 rm -rf /opt/storm-%{version}
-rm -rf /opt/storm-local
 exit 0
 
 %changelog
