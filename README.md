@@ -36,17 +36,18 @@ there are some important steps you need to do to prepare your system.
   http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html ,  
   and install uuid-1.6.1-10.el6.x86_64.rpm.  
 ```
-# sudo rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-# sudo rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-# sudo rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-# sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+# su -
+# rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
+# rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
+# rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
+# rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
 ```
 
 3.Install the Storm RPM:
 ```
-> su -
-# sudo rpm -ivh storm-0.9.0rc2-1.el6.x86_64.rpm  
-# sudo rpm -ivh storm-service-0.9.0rc2-1.el6.x86_64.rpm  
+# su -
+# rpm -ivh storm-0.9.0rc2-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.9.0rc2-1.el6.x86_64.rpm  
 ```
 
 4.Set the zookeeper host and niubus host to below property.  
