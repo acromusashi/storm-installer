@@ -29,20 +29,27 @@ there are some important steps you need to do to prepare your system.
 1.Unzip downloaded zip archive.  
   https://github.com/acromusashi/storm-installer/wiki/Download  
 
-2.Change root user and Install the RPM:
+
+(If you don't use ZeroMQ in storm messagin transport, skip 2 procedure.)
+2.Install the ZeroMQ RPM:
   If occur failed dependencies uuid, download from  
   http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html ,  
   and install uuid-1.6.1-10.el6.x86_64.rpm.  
 ```
-> su -
-# rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-0.8.2-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.8.2-1.el6.x86_64.rpm  
+# sudo rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
+# sudo rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
+# sudo rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
+# sudo rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
 ```
-3.Set the zookeeper host and niubus host to below property.  
+
+3.Install the Storm RPM:
+```
+> su -
+# sudo rpm -ivh storm-0.9.0rc2-1.el6.x86_64.rpm  
+# sudo rpm -ivh storm-service-0.9.0rc2-1.el6.x86_64.rpm  
+```
+
+4.Set the zookeeper host and niubus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
 * nimbus.host             (NIMBUS_HOST)  
@@ -67,22 +74,24 @@ Start
 # service storm-nimbus start  
 # service storm-ui start  
 # service storm-drpc start  
+# service storm-logviewer start  
 # service storm-supervisor start  
 ```
 
 Stop
 ```
-# service storm-nimbus stop  
-# service storm-ui stop  
-# service storm-drpc stop  
 # service storm-supervisor stop  
+# service storm-logviewer stop  
+# service storm-drpc stop  
+# service storm-ui stop  
+# service storm-nimbus stop  
 ```
 
 
 ## Dependency libraries
 
 Project    : Storm  
-Version    : 0.8.2  
+Version    : 0.9.0-rc2  
 Lisence    : Eclipse Public License 1.0  
 Source URL : http://storm-project.net/  
 
