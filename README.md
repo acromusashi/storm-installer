@@ -31,6 +31,7 @@ there are some important steps you need to do to prepare your system.
 
 
 (If you don't use ZeroMQ in storm messagin transport, skip 2 procedure.)
+
 2.Install the ZeroMQ RPM:
   If occur failed dependencies uuid, download from  
   http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html ,  
