@@ -28,3 +28,4 @@ LOGVIEWER_JVM_MEMORY="256m"
 # Additional LogViewer JVM options
 LOGVIEWER_JVM_OPTS="-Dlogback.configurationFile=${STORM_HOME}/logback/cluster.xml"
 
+

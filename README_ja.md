@@ -48,8 +48,8 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 3.StormのRPMをインストールします。
 ```
 # su -
-# rpm -ivh storm-0.9.0rc2-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.9.0rc2-1.el6.x86_64.rpm  
+# rpm -ivh storm-0.9.0rc3-1.el6.x86_64.rpm  
+# rpm -ivh storm-service-0.9.0rc3-1.el6.x86_64.rpm  
 ```
 
 4.設定ファイルにzookeeper hostとnimbus hostを設定します。  
@@ -95,7 +95,7 @@ Stop
 ## 配布ライブラリライセンス
 
 名称       : Storm  
-バージョン : 0.9.0-rc2  
+バージョン : 0.9.0-rc3  
 Lisence    : Eclipse Public License 1.0  
 Source URL : http://storm-project.net/  
 
