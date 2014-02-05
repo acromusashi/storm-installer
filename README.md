@@ -51,7 +51,7 @@ there are some important steps you need to do to prepare your system.
 # rpm -ivh storm-service-0.9.0-1.el6.x86_64.rpm  
 ```
 
-4.Set the zookeeper host and niubus host to below property.  
+4.Set the zookeeper host and nimbus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
 * nimbus.host             (NIMBUS_HOST)  
