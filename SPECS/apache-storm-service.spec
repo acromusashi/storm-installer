@@ -1,13 +1,13 @@
-Name: storm-service
-Version: 0.9.0
+Name: apache-storm-service
+Version: 0.9.1incubating
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	Daemon Package
 Group: Applications/Internet
-License: EPLv1
+License: Apache License Version 2.0
 URL: http://storm-project.net
-Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-service-0.9.0.tgz
+Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-service-0.9.1incubating.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Requires: storm
+Requires: apache-storm
 Requires(pre): shadow-utils
 %description
 Storm is a distributed realtime computation system. 
@@ -72,6 +72,9 @@ fi
 exit 0
 
 %changelog
+* Tue Apr 08 2013 Acroquest Technology
+- Apache-Storm 0.9.1-incubating Packaging
+
 * Mon Dec 05 2013 Acroquest Technology
 - Storm-0.9.0 Packaging
 
