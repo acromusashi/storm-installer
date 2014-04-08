@@ -5,7 +5,7 @@ Summary: Storm Complex Event Processing
 Group: Applications/Internet
 License: Apache License Version 2.0
 URL: http://storm-project.net
-Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1incubating.tar.gz
+Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1incubating.tgz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires(pre): shadow-utils
 %description
