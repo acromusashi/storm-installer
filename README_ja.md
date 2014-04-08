@@ -29,30 +29,14 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 1.ダウンロードしたZipアーカイブを展開します。  
   https://github.com/acromusashi/storm-installer/wiki/Download 
 
-
-(Stormのメッセージ通信レイヤにZeroMQを使用しない場合、2はスキップしてください。)
-
-2.ZeroMQ関連のRPMファイルをインストールします。
-  uuidに対する依存性の欠如によるエラーが発生した場合、
-　下記のページからuuid-1.6.1-10.el6.x86_64.rpmをダウンロードして
-　インストールを行ってください。
-　http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html
+2.StormのRPMをインストールします。
 ```
 # su -
-# rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-0.9.1incubating-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-service-0.9.1incubating-1.el6.x86_64.rpm  
 ```
 
-3.StormのRPMをインストールします。
-```
-# su -
-# rpm -ivh storm-0.9.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.9.0-1.el6.x86_64.rpm  
-```
-
-4.設定ファイルにzookeeper hostとnimbus hostを設定します。  
+3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
   (参照: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
 * nimbus.host             (NIMBUS_HOST)  
@@ -95,8 +79,8 @@ Stop
 ## 配布ライブラリライセンス
 
 名称       : Storm  
-バージョン : 0.9.0  
-Lisence    : Eclipse Public License 1.0  
+バージョン : 0.9.1-incubating  
+Lisence    : Apache License Version 2.0  
 Source URL : http://storm-project.net/  
 
 名称       : ZeroMQ  
@@ -111,7 +95,5 @@ Source URL : https://github.com/zeromq/jzmq
 
 
 ## License
-
-Distributed under the Eclipse Public License.  
-http://opensource.org/licenses/eclipse-1.0.php
+This software is released under the MIT License, see LICENSE.txt.
 

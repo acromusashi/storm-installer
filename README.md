@@ -29,29 +29,14 @@ there are some important steps you need to do to prepare your system.
 1.Unzip downloaded zip archive.  
   https://github.com/acromusashi/storm-installer/wiki/Download  
 
-
-(If you don't use ZeroMQ in storm messagin transport, skip 2 procedure.)
-
-2.Install the ZeroMQ RPM:
-  If occur failed dependencies uuid, download from  
-  http://zid-lux1.uibk.ac.at/linux/rpm2html/centos/6/os/x86_64/Packages/uuid-1.6.1-10.el6.x86_64.html ,  
-  and install uuid-1.6.1-10.el6.x86_64.rpm.  
+2.Install the Storm RPM:
 ```
 # su -
-# rpm -ivh zeromq-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh zeromq-devel-2.1.7-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-2.1.0-1.el6.x86_64.rpm  
-# rpm -ivh jzmq-devel-2.1.0-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-0.9.1incubating-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-service-0.9.1incubating-1.el6.x86_64.rpm  
 ```
 
-3.Install the Storm RPM:
-```
-# su -
-# rpm -ivh storm-0.9.0-1.el6.x86_64.rpm  
-# rpm -ivh storm-service-0.9.0-1.el6.x86_64.rpm  
-```
-
-4.Set the zookeeper host and nimbus host to below property.  
+3.Set the zookeeper host and nimbus host to below property.  
   (Reference: http://nathanmarz.github.com/storm/doc/backtype/storm/Config.html )  
 * storm.zookeeper.servers (STORM_ZOOKEEPER_SERVERS)  
 * nimbus.host             (NIMBUS_HOST)  
@@ -93,8 +78,8 @@ Stop
 ## Dependency libraries
 
 Project    : Storm  
-Version    : 0.9.0  
-Lisence    : Eclipse Public License 1.0  
+Version    : 0.9.1-incubating  
+Lisence    : Apache License Version 2.0  
 Source URL : http://storm-project.net/  
 
 Project    : ZeroMQ  
@@ -109,7 +94,5 @@ Source URL : https://github.com/zeromq/jzmq
 
 
 ## License
-
-Distributed under the Eclipse Public License.  
-http://opensource.org/licenses/eclipse-1.0.php
+This software is released under the MIT License, see LICENSE.txt.
 
