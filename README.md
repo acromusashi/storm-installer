@@ -75,6 +75,43 @@ Stop
 ```
 
 
+## Caution
+In case this installer uses, worker's log name becomes below format.  
+```
+[TopologyID]worker-[port].log
+```
+
+So, Storm-UI Component summary screen's port link is distabled.   
+If you want use port link, execute below command and modify log setting.
+```
+# vi /opt/storm/logback/cluster.xml
+```
+
+storm-installer initial:
+```
+<configuration scan="true" scanPeriod="60 seconds">
+ <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${storm.home}/logs/${storm.id:-}${logfile.name}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${storm.home}/logs/${storm.id:-}${logfile.name}.%i</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+```
+
+modify after:
+```
+<configuration scan="true" scanPeriod="60 seconds">
+ <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${storm.home}/logs/${logfile.name}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${storm.home}/logs/${logfile.name}.%i</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+```
+
+
 ## Dependency libraries
 
 Project    : Storm  
