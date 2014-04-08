@@ -75,6 +75,43 @@ Stop
 # service storm-nimbus stop  
 ```
 
+## 注意点
+本インストーラを使用した場合、Workerのログ名称は下記の形式となります。  
+```
+[TopologyID]worker-[port].log
+```
+
+そのため、Storm-UI 「Component summary」画面のPortリンクは使用できません。  
+使用したい場合は下記のコマンドを実行し、log出力定義を修正してください。  
+```
+# vi /opt/storm/logback/cluster.xml
+```
+
+修正前:
+```
+<configuration scan="true" scanPeriod="60 seconds">
+ <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${storm.home}/logs/${storm.id:-}${logfile.name}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${storm.home}/logs/${storm.id:-}${logfile.name}.%i</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+```
+
+修正後:
+```
+<configuration scan="true" scanPeriod="60 seconds">
+ <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${storm.home}/logs/${logfile.name}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${storm.home}/logs/${logfile.name}.%i</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>9</maxIndex>
+    </rollingPolicy>
+```
+
+
 
 ## 配布ライブラリライセンス
 
