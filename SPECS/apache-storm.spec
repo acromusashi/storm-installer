@@ -1,13 +1,12 @@
-Name: storm-service
-Version: 0.9.0
+Name: storm	
+Version: 0.9.0rc2
 Release: 1%{?dist}
-Summary: Storm Complex Event Processing	Daemon Package
+Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: EPLv1
 URL: http://storm-project.net
-Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-service-0.9.0.tgz
+Source: https://dl.dropboxusercontent.com/s/p5wf0hsdab5n9kn/storm-0.9.0rc2.tgz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-Requires: storm
 Requires(pre): shadow-utils
 %description
 Storm is a distributed realtime computation system. 
@@ -36,57 +35,42 @@ exit 0
 %install
 
 # Copy the storm file to the right places
-%{__mkdir_p} %{buildroot}/etc/sysconfig
-%{__mkdir_p} %{buildroot}/etc/init.d
-%{__mkdir_p} %{buildroot}/var/run/storm
-
-%{__mv} init.d/storm-nimbus init.d/storm-supervisor init.d/storm-ui init.d/storm-drpc init.d/storm-logviewer %{buildroot}/etc/init.d
-%{__mv} sysconfig/storm %{buildroot}/etc/sysconfig/storm
-
+%{__mkdir_p} %{buildroot}/opt/storm-%{version}
+%{__mkdir_p} %{buildroot}/var/opt/storm
+%{__cp} -R * %{buildroot}/opt/storm-%{version}/
+%{__ln_s} /opt/storm-%{version} %{buildroot}/opt/storm
 
 # Form a list of files for the files directive
 echo $(cd %{buildroot} && find . -type f | cut -c 2-) | tr ' ' '\n' > files.txt
 # Grab the symlinks too
 echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 
-%files -f files.txt
-%defattr(755,storm,storm,-)
-%dir /var/run/storm
-
 %clean
-[ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
+%{__rm} -rf %{buildroot}/opt/storm-%{version}
+%{__rm} %{buildroot}/opt/storm
 
-%preun
-if [ "$1" = "0" ]; then
-    /sbin/service storm-ui stop
-    /sbin/service storm-nimbus stop
-    /sbin/service storm-supervisor stop
-    /sbin/service storm-drpc stop
-    /sbin/service storm-logviewer stop
-    /sbin/chkconfig storm-ui off
-    /sbin/chkconfig storm-nimbus off
-    /sbin/chkconfig storm-supervisor off
-    /sbin/chkconfig storm-drpc off
-    /sbin/chkconfig storm-logviewer off
-fi
+%files -f files.txt
+%defattr(644,storm,storm,755)
+
+%post
+chown -R storm:storm /opt/storm-%{version}
+chmod -R 755 /opt/storm/bin/*
+exit 0
+
+%postun
+rm -rf /opt/storm-%{version}
 exit 0
 
 %changelog
-* Mon Dec 05 2013 Acroquest Technology
-- Storm-0.9.0 Packaging
-
-* Mon Dec 02 2013 Acroquest Technology
-- Storm-0.9.0-rc3 Packaging
-
 * Mon Nov 11 2013 Acroquest Technology
 - Storm-0.9.0-rc2 Packaging
 
-* Tue Mar 12 2013 spudone
+* Tue Mar 16 2013 spudone
 - Fixed to run Storm under a non-root account
 - Fixed uninstall cleanup
 
 * Thu Feb 07 2013 Acroquest Technology
 - Storm-0.8.2 Packaging
 
-* Tue Oct 26 2012 Acroquest Technology
+* Tue Oct 14 2012 Acroquest Technology
 - Initial Packaging
