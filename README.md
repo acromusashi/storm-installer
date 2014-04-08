@@ -82,7 +82,7 @@ In case this installer uses, worker's log name becomes below format.
 ```
 
 So, Storm-UI Component summary screen's port link is distabled.   
-If you want use port link, execute below command and modify log setting.
+If you want to use port link, execute below command and modify log setting.
 ```
 # vi /opt/storm/logback/cluster.xml
 ```
