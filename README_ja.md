@@ -32,8 +32,8 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 2.StormのRPMをインストールします。
 ```
 # su -
-# rpm -ivh apache-storm-0.9.1incubating-1.el6.x86_64.rpm  
-# rpm -ivh apache-storm-service-0.9.1incubating-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-0.9.2incubating-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-service-0.9.2incubating-1.el6.x86_64.rpm  
 ```
 
 3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
@@ -116,7 +116,7 @@ Stop
 ## 配布ライブラリライセンス
 
 名称       : Storm  
-バージョン : 0.9.1-incubating  
+バージョン : 0.9.2-incubating  
 Lisence    : Apache License Version 2.0  
 Source URL : http://storm-project.net/  
 
