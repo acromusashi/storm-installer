@@ -50,6 +50,11 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 %{__rm} %{buildroot}/opt/storm
 
 %files -f files.txt
+# Exclude compiled python files
+%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/splitsentence.pyc
+%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/splitsentence.pyo
+%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/storm.pyc
+%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/storm.pyo
 %defattr(644,storm,storm,755)
 
 %post
