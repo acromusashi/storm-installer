@@ -1,11 +1,11 @@
 Name: apache-storm	
-Version: 0.9.2incubating
+Version: 0.9.3
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: Apache License Version 2.0
 URL: http://storm-project.net
-Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.2incubating.tgz
+Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.3.tgz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires(pre): shadow-utils
 %description
@@ -62,6 +62,9 @@ rm -rf /opt/storm-%{version}
 exit 0
 
 %changelog
+* Tue Nov 30 2014 Acroquest Technology
+- Apache-Storm 0.9.3 Packaging
+
 * Tue Jul 09 2014 Acroquest Technology
 - Apache-Storm 0.9.2-incubating Packaging
 
