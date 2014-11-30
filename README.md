@@ -78,7 +78,7 @@ Stop
 ## Caution
 In case this installer uses, worker's log name becomes below format.  
 ```
-[TopologyID]worker-[port].log
+[TopologyID]-worker-[port].log
 ```
 
 So, Storm-UI Component summary screen's port link is distabled.   
@@ -91,9 +91,9 @@ storm-installer initial:
 ```
 <configuration scan="true" scanPeriod="60 seconds">
  <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${storm.home}/logs/${storm.id:-}${logfile.name}</file>
+    <file>${storm.log.dir}/${storm.id:-storm}-${logfile.name}</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-      <fileNamePattern>${storm.home}/logs/${storm.id:-}${logfile.name}.%i</fileNamePattern>
+      <fileNamePattern>${storm.log.dir}/${storm.id:-storm}-${logfile.name}.%i</fileNamePattern>
       <minIndex>1</minIndex>
       <maxIndex>9</maxIndex>
     </rollingPolicy>
@@ -103,9 +103,9 @@ modify after:
 ```
 <configuration scan="true" scanPeriod="60 seconds">
  <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${storm.home}/logs/${logfile.name}</file>
+    <file>${storm.log.dir}/${logfile.name}</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-      <fileNamePattern>${storm.home}/logs/${logfile.name}.%i</fileNamePattern>
+      <fileNamePattern>${storm.log.dir}/${logfile.name}.%i</fileNamePattern>
       <minIndex>1</minIndex>
       <maxIndex>9</maxIndex>
     </rollingPolicy>
@@ -114,20 +114,10 @@ modify after:
 
 ## Dependency libraries
 
-Project    : Storm  
-Version    : 0.9.2-incubating  
+Project    : Aache-Storm  
+Version    : 0.9.3  
 Lisence    : Apache License Version 2.0  
-Source URL : http://storm-project.net/  
-
-Project    : ZeroMQ  
-Version    : 2.1.7  
-Lisence    : LGPLv3  
-Source URL : http://www.zeromq.org/  
-
-Project    : JZMQ  
-Version    : 2.1.0  
-Lisence    : LGPLv3  
-Source URL : https://github.com/zeromq/jzmq  
+Source URL : https://storm.apache.org/  
 
 
 ## License
