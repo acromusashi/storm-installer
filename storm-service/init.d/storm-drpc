@@ -13,14 +13,10 @@ RETVAL=0
 STORM_USER=storm
 PID_FILE="/var/run/storm/storm-drpc.pid"
 
-STORM_HOME="/opt/storm"
-STORM_CORE_JAR=($STORM_HOME/storm-core-*.jar)
-STORM_NETTY_JAR=($STORM_HOME/storm-netty-*.jar)
-STORM_LOG_JAR=($STORM_HOME/storm-console-logging-*.jar)
-STORM_LIB="$STORM_HOME/lib"
-STORM_CONF="$STORM_HOME/conf"
+# Source config
+. /etc/sysconfig/storm
 
-CLASSPATH="$STORM_CORE_JAR:$STORM_NETTY_JAR:$STORM_LOG_JAR:$STORM_LIB/*:$STORM_CONF"
+CLASSPATH="$STORM_CORE_JAR:$STORM_NETTY_JAR:$STORM_LOG_JAR:$STORM_LIB/*:$STORM_JAR:$STORM_CONF"
 
 # Source config
 . /etc/sysconfig/storm
@@ -32,7 +28,7 @@ start() {
     else
 	    echo "Starting storm drpc..."
     fi 
-    STORM_CMD="java -$JVM_TYPE -Xmx$DRPC_JVM_MEMORY -Duser.dir=\"$STORM_HOME\" -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=\"$STORM_HOME\" -Dlogfile.name=drpc.log $DRPC_JVM_OPTS -cp \"$CLASSPATH\" backtype.storm.daemon.drpc &"
+    STORM_CMD="java -$JVM_TYPE -Xmx$DRPC_JVM_MEMORY -Duser.dir=\"$STORM_HOME\" -Djava.library.path=\"$JAVA_LIBRARY_PATH\" -Dstorm.options=\"$STORM_OPTIONS\" -Dstorm.home=\"$STORM_HOME\" -Dstorm.log.dir=\"$STORM_LOG_DIR\" -Dlogfile.name=drpc.log $DRPC_JVM_OPTS -cp \"$CLASSPATH\" backtype.storm.daemon.drpc &"
     runuser --shell=/bin/bash --preserve-environment $STORM_USER --command="$STORM_CMD > /dev/null && echo \$! > $PID_FILE"
     RETVAL=$?
     storm_status

@@ -1,6 +1,15 @@
 # This file contains default configurations for storm startup
 JVM_TYPE="server"
 JAVA_LIBRARY_PATH="/usr/local/lib:/opt/local/lib:/usr/lib:/usr/lib64"
+
+STORM_HOME="/opt/storm"
+STORM_LOG_DIR="$STORM_HOME/logs"
+STORM_CORE_JAR=($STORM_HOME/storm-core-*.jar)
+STORM_NETTY_JAR=($STORM_HOME/storm-netty-*.jar)
+STORM_LOG_JAR=($STORM_HOME/storm-console-logging-*.jar)
+STORM_LIB="$STORM_HOME/lib"
+STORM_CONF="$STORM_HOME/conf"
+
 STORM_OPTIONS=""
 
 # Nimbus configuration options
