@@ -1,11 +1,11 @@
+%define _service_dir %(echo $PWD)/../storm-service
 Name: apache-storm-service
-Version: 0.9.3
+Version: 0.9.4
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	Daemon Package
 Group: Applications/Internet
 License: Apache License Version 2.0
-URL: http://storm-project.net
-Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.2-incubating/apache-storm-service-0.9.3.tgz
+URL: https://storm.apache.org/
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: apache-storm
 Requires(pre): shadow-utils
@@ -28,30 +28,26 @@ getent passwd storm >/dev/null || \
 exit 0
 
 %prep
-%setup -q
-
-# This SPEC build is Only Packaging.
-%build
-
-%install
 
 # Copy the storm file to the right places
-%{__mkdir_p} %{buildroot}/etc/sysconfig
-%{__mkdir_p} %{buildroot}/etc/init.d
-%{__mkdir_p} %{buildroot}/var/run/storm
+%{__mkdir_p} %{buildroot}%{_sysconfdir}/sysconfig
+%{__mkdir_p} %{buildroot}%{_initddir}/
+%{__mkdir_p} %{buildroot}%{_localstatedir}/run/storm
 
-%{__mv} init.d/storm-nimbus init.d/storm-supervisor init.d/storm-ui init.d/storm-drpc init.d/storm-logviewer %{buildroot}/etc/init.d
-%{__mv} sysconfig/storm %{buildroot}/etc/sysconfig/storm
+%{__cp} %{_service_dir}/init.d/* %{buildroot}%{_initddir}/
+%{__chmod} +x  %{buildroot}%{_initddir}/*
+%{__cp} %{_service_dir}/sysconfig/storm %{buildroot}%{_sysconfdir}/sysconfig/storm
 
-
-# Form a list of files for the files directive
-echo $(cd %{buildroot} && find . -type f | cut -c 2-) | tr ' ' '\n' > files.txt
-# Grab the symlinks too
-echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
-
-%files -f files.txt
-%defattr(755,storm,storm,-)
-%dir /var/run/storm
+%files 
+%defattr(-,root,root,-)
+%{_sysconfdir}/sysconfig/storm
+%{_initddir}/storm-drpc
+%{_initddir}/storm-logviewer
+%{_initddir}/storm-nimbus
+%{_initddir}/storm-supervisor
+%{_initddir}/storm-ui
+%defattr(-,storm,storm,-)
+/var/run/storm
 
 %clean
 [ "%{buildroot}" != "/" ] && %{__rm} -rf %{buildroot}
