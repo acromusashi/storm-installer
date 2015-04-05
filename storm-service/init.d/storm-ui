@@ -16,7 +16,7 @@ PID_FILE="/var/run/storm/storm-ui.pid"
 # Source config
 . /etc/sysconfig/storm
 
-CLASSPATH="$STORM_CORE_JAR:$STORM_NETTY_JAR:$STORM_LOG_JAR:$STORM_LIB/*:$STORM_JAR:$STORM_CONF"
+CLASSPATH="$STORM_LIB/*:$STORM_CONF"
 
 # Source config
 . /etc/sysconfig/storm
