@@ -1,11 +1,11 @@
 Name: apache-storm	
-Version: 0.9.3
+Version: 0.9.4
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	
 Group: Applications/Internet
 License: Apache License Version 2.0
-URL: http://storm-project.net
-Source: http://www.apache.org/dyn/closer.cgi/incubator/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.3.tgz
+URL: https://storm.apache.org/
+Source: http://www.apache.org/dyn/closer.cgi/storm/apache-storm-0.9.4/apache-storm-0.9.4.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires(pre): shadow-utils
 %description
@@ -33,12 +33,17 @@ exit 0
 %build
 
 %install
-
 # Copy the storm file to the right places
 %{__mkdir_p} %{buildroot}/opt/storm-%{version}
 %{__mkdir_p} %{buildroot}/var/opt/storm
 %{__cp} -R * %{buildroot}/opt/storm-%{version}/
 %{__ln_s} /opt/storm-%{version} %{buildroot}/opt/storm
+
+#update default config
+echo "nimbus.host: \"localhost\"" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
+echo "storm.zookeeper.servers:" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
+echo "     - \"localhost\"" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
+echo "storm.local.dir: \"/opt/storm\"" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
 
 # Form a list of files for the files directive
 echo $(cd %{buildroot} && find . -type f | cut -c 2-) | tr ' ' '\n' > files.txt
@@ -50,11 +55,7 @@ echo $(cd %{buildroot} && find . -type l | cut -c 2-) | tr ' ' '\n' >> files.txt
 %{__rm} %{buildroot}/opt/storm
 
 %files -f files.txt
-# Exclude compiled python files
-%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/splitsentence.pyc
-%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/splitsentence.pyo
-%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/storm.pyc
-%exclude /opt/storm-%{version}/examples/storm-starter/multilang/resources/storm.pyo
+
 %defattr(644,storm,storm,755)
 
 %post
