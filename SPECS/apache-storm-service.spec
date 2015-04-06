@@ -1,10 +1,10 @@
-%define _service_dir %(echo $PWD)/../storm-service
 Name: apache-storm-service
 Version: 0.9.4
 Release: 1%{?dist}
 Summary: Storm Complex Event Processing	Daemon Package
 Group: Applications/Internet
 License: Apache License Version 2.0
+Source: https://github.com/acromusashi/storm-installer/apache-storm-service-0.9.4.tgz
 URL: https://storm.apache.org/
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: apache-storm
@@ -28,15 +28,21 @@ getent passwd storm >/dev/null || \
 exit 0
 
 %prep
+%setup -q
+
+# This SPEC build is Only Packaging.
+%build
+
+%install
 
 # Copy the storm file to the right places
 %{__mkdir_p} %{buildroot}%{_sysconfdir}/sysconfig
 %{__mkdir_p} %{buildroot}%{_initddir}/
 %{__mkdir_p} %{buildroot}%{_localstatedir}/run/storm
 
-%{__cp} %{_service_dir}/init.d/* %{buildroot}%{_initddir}/
+%{__cp} init.d/* %{buildroot}%{_initddir}/
 %{__chmod} +x  %{buildroot}%{_initddir}/*
-%{__cp} %{_service_dir}/sysconfig/storm %{buildroot}%{_sysconfdir}/sysconfig/storm
+%{__cp} sysconfig/storm %{buildroot}%{_sysconfdir}/sysconfig/storm
 
 %files 
 %defattr(-,root,root,-)
