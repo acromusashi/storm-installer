@@ -48,7 +48,7 @@ echo "" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
 echo "storm.local.dir: \"/opt/storm\"" >> %{buildroot}/opt/storm-%{version}/conf/storm.yaml
 
 #update logback config
-sed -e 's/${logfile\.name}/${storm.id:-storm}-${logfile.name}/g' %{buildroot}/opt/storm-%{version}/logback/cluster.xml
+sed -i -e 's/${logfile\.name}/${storm.id:-storm}-${logfile.name}/g' %{buildroot}/opt/storm-%{version}/logback/cluster.xml
 
 # Form a list of files for the files directive
 echo $(cd %{buildroot} && find . -type f | cut -c 2-) | tr ' ' '\n' > files.txt
