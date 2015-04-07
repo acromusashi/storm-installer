@@ -18,7 +18,7 @@ ZooKeeperのインストールにあたっては
 cdhのZooKeeperパッケージを用いるか、下記のページを参照ください。  
   ■cdh  
   http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/installation_installation.html  
-  http://archive-primary.cloudera.com/cdh5/redhat/6/x86_64/cdh/5.2.0/RPMS/x86_64/  
+  http://archive-primary.cloudera.com/cdh5/redhat/6/x86_64/cdh/5.3.2/RPMS/x86_64/  
 
   ■Taste of Tech Topics Twitter Stormをインストールしてみます！  
   http://d.hatena.ne.jp/acro-engineer/20111123/1322059295  
@@ -32,8 +32,8 @@ cdhのZooKeeperパッケージを用いるか、下記のページを参照く�
 2.StormのRPMをインストールします。
 ```
 # su -
-# rpm -ivh apache-storm-0.9.3-1.el6.x86_64.rpm  
-# rpm -ivh apache-storm-service-0.9.3-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-0.9.4-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-service-0.9.4-1.el6.x86_64.rpm  
 ```
 
 3.設定ファイルにzookeeper hostとnimbus hostを設定します。  
@@ -115,7 +115,7 @@ modify after:
 ## 配布ライブラリライセンス
 
 名称       : Aache-Storm  
-バージョン : 0.9.3  
+バージョン : 0.9.4  
 Lisence    : Apache License Version 2.0  
 Source URL : https://storm.apache.org/  
 

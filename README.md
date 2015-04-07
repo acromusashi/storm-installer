@@ -18,7 +18,7 @@ there are some important steps you need to do to prepare your system.
 1.Storm needs zookeeper cluster.  
   For zookeeper cluster installation, you find install step on cdh.  
   http://www.cloudera.com/content/cloudera/en/documentation/core/latest/topics/installation_installation.html  
-  http://archive-primary.cloudera.com/cdh5/redhat/6/x86_64/cdh/5.2.0/RPMS/x86_64/  
+  http://archive-primary.cloudera.com/cdh5/redhat/6/x86_64/cdh/5.3.2/RPMS/x86_64/  
 
   or below url(in Japanese)  
   http://d.hatena.ne.jp/acro-engineer/20111123/1322059295  
@@ -32,8 +32,8 @@ there are some important steps you need to do to prepare your system.
 2.Install the Storm RPM:
 ```
 # su -
-# rpm -ivh apache-storm-0.9.3-1.el6.x86_64.rpm  
-# rpm -ivh apache-storm-service-0.9.3-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-0.9.4-1.el6.x86_64.rpm  
+# rpm -ivh apache-storm-service-0.9.4-1.el6.x86_64.rpm  
 ```
 
 3.Set the zookeeper host and nimbus host to below property.  
@@ -115,7 +115,7 @@ modify after:
 ## Dependency libraries
 
 Project    : Aache-Storm  
-Version    : 0.9.3  
+Version    : 0.9.4  
 Lisence    : Apache License Version 2.0  
 Source URL : https://storm.apache.org/  
 
