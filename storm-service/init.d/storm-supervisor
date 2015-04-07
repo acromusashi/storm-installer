@@ -16,7 +16,7 @@ PID_FILE="/var/run/storm/storm-supervisor.pid"
 # Source config
 . /etc/sysconfig/storm
 
-CLASSPATH="$STORM_LIB/*:$STORM_CONF"
+CLASSPATH="$STORM_LIB/*:$STORM_HOME:$STORM_CONF"
 
 start() {
     if storm_status>/dev/null; then
